@@ -1,0 +1,85 @@
+/* Reseta alguns estilos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para o corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Estilos para o cabeçalho */
+header {
+    background: #33B667;
+    color: white;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1vw;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 15%;
+    font-size: 2vw;
+    gap: 5vh;
+}
+
+.tableRoud {
+    border-radius: 10px;
+    border: 5px solid #DDDDDD;
+}
+
+.titleRoud {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2vw;
+}
+
+.titleRoud h2 {
+    font-weight: lighter;
+}
+
+.titleRoud #rodada-atual {
+    font-weight: bold; /* Aplica o negrito ao texto */
+    border: solid red;
+}
+
+.page {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+}
+
+/* Estilos para o botão */
+button {
+    background: #33B667;
+    width: 3vw;
+    height: vw;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #005f73;
+}
+
+/* Estilos para o rodapé */
+footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}

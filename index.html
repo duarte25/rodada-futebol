@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Primeira Página</title>
+    <!-- Link para o CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>SEVN ESPORTES ⚽</h1>
+    </header>
+
+    <main>
+        <p>Confira as rodadas do nosso campeonato fictício!</p>
+
+        <div class="tableRoud">
+            <!-- Botões de paginação -->
+            <div class="page">
+                <button id="anterior" disabled><</button>
+                <div class="titleRoud">
+                    <h2>Rodadas de jogos</h2>
+                    <h2><strong><h4 id="rodada-atual"></h4></strong></h2>
+                </div>
+                <button id="proxima">></button>
+            </div>
+
+            <div id="resultados"></div>
+        </div>
+
+        <!-- Link para o código JavaScript -->
+        <script src="main.js"></script>
+</body>
+
+</html>
