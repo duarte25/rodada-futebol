@@ -109,6 +109,10 @@ button {
     width: 25%;
 }
 
+.versusImage {
+    width: 5%;
+}
+
 /* Barra horizontal curta entre os jogos */
 .barraHorizontalCurta {
     height: 2px;               
