@@ -8,7 +8,7 @@
 /* Estilos para o corpo da página */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    /* background-color: #f0f0f0; */
     color: #333;
 }
 
@@ -35,14 +35,25 @@ main {
 
 .tableRoud {
     border-radius: 10px;
-    border: 5px solid #DDDDDD;
+    border: 2px solid #DDDDDD;
+    width: 30%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page {
+    display: flex;
+    flex-direction: row;
+    margin: 0 10px;
 }
 
 .titleRoud {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 1.2vw;
+    font-size: 0.9vw;
 }
 
 .titleRoud h2 {
@@ -51,14 +62,8 @@ main {
 
 .titleRoud #rodada-atual {
     font-weight: bold; /* Aplica o negrito ao texto */
-    border: solid red;
 }
 
-.page {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 10px;
-}
 
 /* Estilos para o botão */
 button {
@@ -76,24 +81,44 @@ button:hover {
     background-color: #005f73;
 }
 
+.containerRodada {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+}
+
 .versusImage {
     width: 20px;  /* Largura da imagem */
     height: 20px; /* Altura da imagem */
     margin: 0 10px; /* Espaçamento lateral para afastar dos textos dos times */
 }
 
+/* Barra horizontal curta entre os jogos */
 .barraHorizontalCurta {
-    width: 80%; /* Define uma largura menor, você pode ajustar esse valor */
-    height: 2px; /* Altura da barra */
-    background: #DDDDDD;
+    height: 2px;                /* Altura fina da barra */
+    width: 100%;                 /* Barra mais curta, ajustável */
+    background-color:#DDDDDD;     /* Cor da barra */
+    align-self: center;          /* Centraliza horizontalmente dentro do container */
+    margin: 2vh 0;
 }
 
-.containerRodada {
+.jogo {
     display: flex;
-    flex-direction: column;
-    gap: 4vh;
-    margin-top: 5vh;
+    flex-direction: row;
+    align-items: center;
 }
+
+.containerTimeScore {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    font-size: 1vw;
+}
+
+.teamScore {
+    margin-right: 10px; /* Ajuste o valor conforme o necessário */
+}
+
 
 /* Estilos para o rodapé */
 footer {

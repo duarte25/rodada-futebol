@@ -66,20 +66,24 @@ function exibirRodada(indiceRodada) {
 
 // Função que cria o HTML de uma rodada e seus jogos
 function criarRodadaHTML(roundData) {
-    // Cria uma div para servir como um container com as informações que desejo incluir
     const container = document.createElement('div');
-
     container.classList.add('containerRodada');
 
-    roundData.games.forEach(game => {
-        // Chama outra função que criara esse jogo especifico
+    roundData.games.forEach((game, index) => {
+        // Chama a função que criará esse jogo específico
         const gameHtml = criarJogoHTML(game);
         container.appendChild(gameHtml);
+
+        // Se não for o último jogo, adiciona a barra entre os jogos
+        if (index < roundData.games.length - 1) {
+            const versusBar = document.createElement('div');
+            versusBar.classList.add('barraHorizontalCurta');
+            container.appendChild(versusBar);
+        }
     });
 
     return container;
 }
-
 // Função que cria o HTML de cada jogo
 function criarJogoHTML(game) {
     const gameInfo = document.createElement('div');
@@ -87,14 +91,20 @@ function criarJogoHTML(game) {
 
     const homeTeam = document.createElement('span');
     homeTeam.innerHTML = `
+    <div class="containerTimeScore">
         <img src="${escudosTimes[game.team_home_id]}" alt="Escudo de ${game.team_home_name}" class="escudo">
-        ${game.team_home_name} ${game.team_home_score}
+        <span class="teamName">${game.team_home_name}</span>
+        <span class="teamScore">${game.team_home_score}</span> 
+    </div>
     `;
 
     const awayTeam = document.createElement('span');
     awayTeam.innerHTML = `
-        ${game.team_away_score} ${game.team_away_name}
+    <div class="containerTimeScore">
+        <span class="teamScore">${game.team_away_score}</span> 
+        <span class="teamName">${game.team_away_name}</span>
         <img src="${escudosTimes[game.team_away_id]}" alt="Escudo de ${game.team_away_name}" class="escudo">
+    </div>
     `;
 
     gameInfo.appendChild(homeTeam);
@@ -110,12 +120,6 @@ function criarJogoHTML(game) {
     gameInfo.appendChild(versusImage);
 
     gameInfo.appendChild(awayTeam);
-
-    // Cria a barra curta entre os times
-    const versusBar = document.createElement('div');
-    versusBar.classList.add('barraHorizontalCurta');  // Classe para a barra curta horizontal
-
-    gameInfo.appendChild(versusBar);
 
     return gameInfo;
 }
