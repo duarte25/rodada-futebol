@@ -28,7 +28,7 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 15%;
+    margin-top: 5%;
     font-size: 2vw;
     gap: 5vh;
 }
@@ -74,6 +74,25 @@ button {
 
 button:hover {
     background-color: #005f73;
+}
+
+.versusImage {
+    width: 20px;  /* Largura da imagem */
+    height: 20px; /* Altura da imagem */
+    margin: 0 10px; /* Espaçamento lateral para afastar dos textos dos times */
+}
+
+.barraHorizontalCurta {
+    width: 80%; /* Define uma largura menor, você pode ajustar esse valor */
+    height: 2px; /* Altura da barra */
+    background: #DDDDDD;
+}
+
+.containerRodada {
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+    margin-top: 5vh;
 }
 
 /* Estilos para o rodapé */

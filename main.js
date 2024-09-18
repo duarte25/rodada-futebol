@@ -35,19 +35,19 @@ async function init() {
 // Função que faz a requisição à API e retorna os dados
 async function fetchDados() {
     const response = await fetch(apiUrl);
-    
+
     if (!response.ok) {
         throw new Error('Erro ao buscar dados da API');
     }
 
     // Retorna a promessa com o JSON
-    return response.json(); 
+    return response.json();
 }
 
 // Função que constroi uma rodada específica no HTML
 function exibirRodada(indiceRodada) {
     const resultadosDiv = document.getElementById('resultados');
-    
+
     // Limpa o conteúdo anterior para evitar bugs
     resultadosDiv.innerHTML = '';
 
@@ -57,7 +57,7 @@ function exibirRodada(indiceRodada) {
 
     // Chama a função que criara os jogos
     const rodadaHtml = criarRodadaHTML(rodadaData);
-    
+
     resultadosDiv.appendChild(rodadaHtml);
 
     // Atualiza o texto da rodada atual
@@ -68,6 +68,8 @@ function exibirRodada(indiceRodada) {
 function criarRodadaHTML(roundData) {
     // Cria uma div para servir como um container com as informações que desejo incluir
     const container = document.createElement('div');
+
+    container.classList.add('containerRodada');
 
     roundData.games.forEach(game => {
         // Chama outra função que criara esse jogo especifico
@@ -96,8 +98,24 @@ function criarJogoHTML(game) {
     `;
 
     gameInfo.appendChild(homeTeam);
-    gameInfo.appendChild(document.createTextNode(' x '));
+
+    const versusImage = document.createElement('img');
+    versusImage.src = 'img/versus.svg'; // Caminho da imagem
+    versusImage.alt = 'Versus';            // Texto alternativo, caso a imagem não carregue
+
+    // Adiciona a classe CSS
+    versusImage.classList.add('versusImage');
+
+    // Adiciona a imagem no lugar do ' x '
+    gameInfo.appendChild(versusImage);
+
     gameInfo.appendChild(awayTeam);
+
+    // Cria a barra curta entre os times
+    const versusBar = document.createElement('div');
+    versusBar.classList.add('barraHorizontalCurta');  // Classe para a barra curta horizontal
+
+    gameInfo.appendChild(versusBar);
 
     return gameInfo;
 }
