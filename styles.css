@@ -1,15 +1,15 @@
-/* Reseta alguns estilos padrão */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilos para o corpo da página */
 body {
-    font-family: Arial, sans-serif;
-    /* background-color: #f0f0f0; */
-    color: #333;
+    font-family: 'Inter', sans-serif;
+    background-color: #ffff;
+    color: #000000;
 }
 
 /* Estilos para o cabeçalho */
@@ -20,7 +20,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1vw;
+    font-size: 0.8vw;
 }
 
 main {
@@ -28,32 +28,39 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 5%;
+    margin-top: 7%;
     font-size: 2vw;
-    gap: 5vh;
+    gap: 10vh;
 }
 
+/* Estilo para a tabela com os valores */
 .tableRoud {
     border-radius: 10px;
-    border: 2px solid #DDDDDD;
-    width: 30%;
+    border: 1px solid #DDDDDD;
+    width: 23vw;
     height: 50vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 2vh;
 }
 
+/* Paginação */
 .page {
     display: flex;
     flex-direction: row;
-    margin: 0 10px;
+    align-self: center;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 7%;
+    width: 20vw;
 }
 
+/* Titulo com a rodada */
 .titleRoud {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 0.9vw;
+    font-size: 0.6vw;
 }
 
 .titleRoud h2 {
@@ -61,44 +68,47 @@ main {
 }
 
 .titleRoud #rodada-atual {
-    font-weight: bold; /* Aplica o negrito ao texto */
+    font-weight: bold;
 }
 
-
-/* Estilos para o botão */
+/* Estilos para o botão de paginação */
 button {
     background: #33B667;
-    width: 3vw;
-    height: vw;
-    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px;
+    width: 2vw;
+    height: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-button:hover {
-    background-color: #005f73;
-}
-
+/* Container com a rodada */
 .containerRodada {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-top: 5vh;
+    font-weight: bold;
 }
 
+
 .versusImage {
-    width: 20px;  /* Largura da imagem */
-    height: 20px; /* Altura da imagem */
-    margin: 0 10px; /* Espaçamento lateral para afastar dos textos dos times */
+    width: 20px;  
+    height: 20px; 
+    margin: 0 10px; 
+}
+
+.escudo {
+    width: 25%;
 }
 
 /* Barra horizontal curta entre os jogos */
 .barraHorizontalCurta {
-    height: 2px;                /* Altura fina da barra */
-    width: 100%;                 /* Barra mais curta, ajustável */
-    background-color:#DDDDDD;     /* Cor da barra */
-    align-self: center;          /* Centraliza horizontalmente dentro do container */
+    height: 2px;               
+    width: 20vw;                
+    background-color:#DDDDDD;   
     margin: 2vh 0;
 }
 
@@ -106,6 +116,8 @@ button:hover {
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 20vw;
+    justify-content: space-between;
 }
 
 .containerTimeScore {
@@ -113,17 +125,4 @@ button:hover {
     align-items: center;
     gap: 0.5vw;
     font-size: 1vw;
-}
-
-.teamScore {
-    margin-right: 10px; /* Ajuste o valor conforme o necessário */
-}
-
-
-/* Estilos para o rodapé */
-footer {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 14px;
-    color: #666;
 }

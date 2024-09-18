@@ -84,6 +84,7 @@ function criarRodadaHTML(roundData) {
 
     return container;
 }
+
 // Função que cria o HTML de cada jogo
 function criarJogoHTML(game) {
     const gameInfo = document.createElement('div');
@@ -94,14 +95,14 @@ function criarJogoHTML(game) {
     <div class="containerTimeScore">
         <img src="${escudosTimes[game.team_home_id]}" alt="Escudo de ${game.team_home_name}" class="escudo">
         <span class="teamName">${game.team_home_name}</span>
-        <span class="teamScore">${game.team_home_score}</span> 
+        <span class="homeScore">${game.team_home_score}</span> 
     </div>
     `;
 
     const awayTeam = document.createElement('span');
     awayTeam.innerHTML = `
     <div class="containerTimeScore">
-        <span class="teamScore">${game.team_away_score}</span> 
+        <span class="awayScore">${game.team_away_score}</span> 
         <span class="teamName">${game.team_away_name}</span>
         <img src="${escudosTimes[game.team_away_id]}" alt="Escudo de ${game.team_away_name}" class="escudo">
     </div>
