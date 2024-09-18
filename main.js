@@ -11,7 +11,7 @@ const escudosTimes = {
 };
 
 // URL da API fornecida
-const apiUrl = 'https://sevn-pleno-esportes.deno.dev/';
+const apiUrl = "https://sevn-pleno-esportes.deno.dev/";
 
 let dadosRodadas = [];
 let rodadaAtual = 0; // Variavel da rodada atual
@@ -28,7 +28,7 @@ async function init() {
         // Configura os botões de paginação
         configurarPaginacao();
     } catch (error) {
-        console.error('Erro:', error);
+        console.error("Erro:", error);
     }
 }
 
@@ -37,7 +37,7 @@ async function fetchDados() {
     const response = await fetch(apiUrl);
 
     if (!response.ok) {
-        throw new Error('Erro ao buscar dados da API');
+        throw new Error("Erro ao buscar dados da API");
     }
 
     // Retorna a promessa com o JSON
@@ -46,10 +46,10 @@ async function fetchDados() {
 
 // Função que constroi uma rodada específica no HTML
 function exibirRodada(indiceRodada) {
-    const resultadosDiv = document.getElementById('resultados');
+    const resultadosDiv = document.getElementById("resultados");
 
     // Limpa o conteúdo anterior para evitar bugs
-    resultadosDiv.innerHTML = '';
+    resultadosDiv.innerHTML = "";
 
     if (indiceRodada < 0 || indiceRodada >= dadosRodadas.length) return;
 
@@ -61,13 +61,13 @@ function exibirRodada(indiceRodada) {
     resultadosDiv.appendChild(rodadaHtml);
 
     // Atualiza o texto da rodada atual
-    document.getElementById('rodada-atual').textContent = `Rodada ${rodadaData.round}`;
+    document.getElementById("rodadaAtual").textContent = `Rodada ${rodadaData.round}`;
 }
 
 // Função que cria o HTML de uma rodada e seus jogos
 function criarRodadaHTML(roundData) {
-    const container = document.createElement('div');
-    container.classList.add('containerRodada');
+    const container = document.createElement("div");
+    container.classList.add("containerRodada");
 
     roundData.games.forEach((game, index) => {
         // Chama a função que criará esse jogo específico
@@ -76,8 +76,8 @@ function criarRodadaHTML(roundData) {
 
         // Se não for o último jogo, adiciona a barra entre os jogos
         if (index < roundData.games.length - 1) {
-            const versusBar = document.createElement('div');
-            versusBar.classList.add('barraHorizontalCurta');
+            const versusBar = document.createElement("div");
+            versusBar.classList.add("barraHorizontalCurta");
             container.appendChild(versusBar);
         }
     });
@@ -87,10 +87,10 @@ function criarRodadaHTML(roundData) {
 
 // Função que cria o HTML de cada jogo
 function criarJogoHTML(game) {
-    const gameInfo = document.createElement('div');
-    gameInfo.classList.add('jogo');
+    const gameInfo = document.createElement("div");
+    gameInfo.classList.add("jogo");
 
-    const homeTeam = document.createElement('span');
+    const homeTeam = document.createElement("span");
     homeTeam.innerHTML = `
     <div class="containerTimeScore">
         <img src="${escudosTimes[game.team_home_id]}" alt="Escudo de ${game.team_home_name}" class="escudo">
@@ -99,7 +99,7 @@ function criarJogoHTML(game) {
     </div>
     `;
 
-    const awayTeam = document.createElement('span');
+    const awayTeam = document.createElement("span");
     awayTeam.innerHTML = `
     <div class="containerTimeScore">
         <span class="awayScore">${game.team_away_score}</span> 
@@ -110,16 +110,12 @@ function criarJogoHTML(game) {
 
     gameInfo.appendChild(homeTeam);
 
-    const versusImage = document.createElement('img');
-    versusImage.src = 'img/versus.svg'; // Caminho da imagem
-    versusImage.alt = 'Versus';            // Texto alternativo, caso a imagem não carregue
+    const versusImage = document.createElement("img");
+    versusImage.src = "img/versus.svg";
+    versusImage.alt = "Versus";            
+    versusImage.classList.add("versusImage");
 
-    // Adiciona a classe CSS
-    versusImage.classList.add('versusImage');
-
-    // Adiciona a imagem no lugar do ' x '
     gameInfo.appendChild(versusImage);
-
     gameInfo.appendChild(awayTeam);
 
     return gameInfo;
@@ -127,10 +123,10 @@ function criarJogoHTML(game) {
 
 // Função que configura os botões de paginação
 function configurarPaginacao() {
-    const btnAnterior = document.getElementById('anterior');
-    const btnProxima = document.getElementById('proxima');
+    const btnAnterior = document.getElementById("anterior");
+    const btnProxima = document.getElementById("proxima");
 
-    btnAnterior.addEventListener('click', () => {
+    btnAnterior.addEventListener("click", () => {
         if (rodadaAtual > 0) {
             rodadaAtual--;
             exibirRodada(rodadaAtual);
@@ -138,7 +134,7 @@ function configurarPaginacao() {
         }
     });
 
-    btnProxima.addEventListener('click', () => {
+    btnProxima.addEventListener("click", () => {
         if (rodadaAtual < dadosRodadas.length - 1) {
             rodadaAtual++;
             exibirRodada(rodadaAtual);
@@ -149,14 +145,28 @@ function configurarPaginacao() {
     atualizarEstadoBotoes();
 }
 
-// Essa função atualiza os botões para que assim consiga acontecer a paginação
 function atualizarEstadoBotoes() {
-    const btnAnterior = document.getElementById('anterior');
-    const btnProxima = document.getElementById('proxima');
+    const btnAnterior = document.getElementById("anterior");
+    const btnProxima = document.getElementById("proxima");
 
-    btnAnterior.disabled = rodadaAtual === 0;
-    btnProxima.disabled = rodadaAtual === dadosRodadas.length - 1;
+    if (rodadaAtual === 0) {
+        btnAnterior.disabled = true;
+        btnAnterior.classList.add("botaoDesativado");
+       
+    } else {
+        btnAnterior.disabled = false;
+        btnAnterior.classList.remove("botaoDesativado");
+    }
+
+    if (rodadaAtual === dadosRodadas.length - 1) {
+        btnProxima.disabled = true;
+        btnProxima.classList.add("botaoDesativado");
+    } else {
+        btnProxima.disabled = false;
+        btnProxima.classList.remove("botaoDesativado");
+    }
 }
+
 
 // Inicia o fluxo da aplicação ao carregar a página
 init();

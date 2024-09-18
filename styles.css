@@ -84,6 +84,11 @@ button {
     justify-content: center;
 }
 
+.botaoDesativado {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 /* Container com a rodada */
 .containerRodada {
     display: flex;
